@@ -37,9 +37,9 @@ public class ModeleAppliCR {
 		return praticiens ;
 	}
 	
-	public List<Praticien> getPraticiensHesitants(){
-		List<Praticien> praticiensHesitants = new ArrayList<Praticien>() ;
+	public List<Praticien> getClients(){
+		List<Praticien> Clients = new ArrayList<Praticien>() ;
 		
-		return praticiensHesitants ;
+		return Clients ;
 	}
 }
