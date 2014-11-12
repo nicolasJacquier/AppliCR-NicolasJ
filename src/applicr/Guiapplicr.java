@@ -16,23 +16,16 @@ import javax.swing.JMenuItem;
  * @author xilim
  *
  */
-public class GuiAppliCR extends JFrame implements ActionListener {
+public class Guiapplicr extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-	private ModeleLocations modele ;
+	private Modele modele ;
 	private Controleur controleur ;
-		
+	
 	private JMenuItem itemQuitter ;
+	private JMenuItem itemVisualiserPraticiensH ;
 
-	private JMenuItem itemVisualiserPraticiensHesitants ;
-
-
-
-
-	private VueListePraticiensHesitants vueVisualiserPraticiensHesitants ;
-
-	
-	
+	private VueListePraticiens vueVisualiserPraticiensH ;
 	
 	private CardLayout vues ;
 	private Container conteneur ;
@@ -42,14 +35,14 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 	 * @param modele Le modèle
 	 * @param controleur Le contrôleur
 	 */
-	public GuiAppliCR(ModeleLocations modele, Controleur controleur) {
+	public Guiapplicr(Modele modele, Controleur controleur) {
 		super();
-		System.out.println("Guiapplicr::Guiapplicr()") ;
+		System.out.println("GuiRentaco::Guiapplicr()") ;
 		this.modele = modele;
 		this.controleur = controleur ;
 		this.controleur.setVuePrincipales(this);
 		
-		this.setTitle("applicr") ;
+		this.setTitle("AppliCR") ;
 		//this.setSize(1300,500) ; 
 		this.setSize(1120,520) ;
 		this.setLocationRelativeTo(null) ;
@@ -58,22 +51,12 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 		this.vues = new CardLayout(2,2) ;
 		this.conteneur = this.getContentPane() ;
 		this.conteneur.setLayout(this.vues) ;
-		
 
-		vueVisualiserPraticiensHesitants = new VueListePraticiensHesitants(modele,controleur) ;
+		vueVisualiserPraticiensH = new VueListePraticiens(modele,controleur) ;
 
+		this.conteneur.add(vueVisualiserPraticiensH,"Liste des Praticiens Hesitants") ;
 
-
-	
-		
-
-		this.conteneur.add(vueVisualiserPraticiensHesitants,"Liste PraticiensHesitants") ;
-
-
-
-		
-	
-		this.vues.show(this.conteneur, "Liste locations");
+		this.vues.show(this.conteneur, "Liste des Praticiens Hesitants");
 		
 		this.creerBarreMenus() ;
 		this.setVisible(true) ;
@@ -94,7 +77,7 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 	 * @param controleur Le nouveau contrôleur
 	 */
 	public void setControleur(Controleur controleur) {
-		System.out.println("Guiapplicr::setControleur()") ;
+		System.out.println("GuiRentaco::setControleur()") ;
 		this.controleur = controleur;
 	}
 
@@ -102,7 +85,7 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 	 * 
 	 * @return Le modèle
 	 */
-	public ModeleLocations getModele() {
+	public Modele getModele() {
 		System.out.println("Guiapplicr::getModele()") ;
 		return this.modele;
 	}
@@ -111,7 +94,7 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 	 * 
 	 * @param modele Le nouveau modèle
 	 */
-	public void setModele(ModeleLocations modele) {
+	public void setModele(Modele modele) {
 		System.out.println("Guiapplicr::setModele()") ;
 		this.modele = modele;
 	}
@@ -129,14 +112,14 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 		menuFichier.add(this.itemQuitter) ;
 		
 
-		JMenu menuPraticiensHesitants = new JMenu("PraticiensHesitants") ;
-		this.itemVisualiserPraticiensHesitants = new JMenuItem("Liste des PraticiensHesitants") ;
-		this.itemVisualiserPraticiensHesitants.addActionListener(this) ;
-		menuPraticiensHesitants.add(this.itemVisualiserPraticiensHesitants) ;
+		JMenu menuPraticiensH = new JMenu("Praticiens Hesitants") ;
+		this.itemVisualiserPraticiensH = new JMenuItem("Liste des Praticiens Hesitants") ;
+		this.itemVisualiserPraticiensH.addActionListener(this) ;
+		menuPraticiensH.add(this.itemVisualiserPraticiensH) ;
 
 		
 		barreMenus.add(menuFichier) ;
-		barreMenus.add(menuPraticiensHesitants) ;
+		barreMenus.add(menuPraticiensH) ;
 
 		
 		this.setJMenuBar(barreMenus) ;
@@ -149,8 +132,8 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 	public void changerDeVue(String nomVue){
 		System.out.println("Guiapplicr::changerVue()") ;
 
-		if(nomVue.equals("Liste PraticiensHesitants")){
-			this.vueVisualiserPraticiensHesitants.actualiser() ;
+		if(nomVue.equals("Liste PraticiensH")){
+			this.vueVisualiserPraticiensH.actualiser() ;
 		}
 
 		this.vues.show(this.conteneur,nomVue) ;
@@ -171,8 +154,8 @@ public class GuiAppliCR extends JFrame implements ActionListener {
 		}
 
 		
-		else if(sourceEvt == this.itemVisualiserPraticiensHesitants){
-			this.controleur.visualiserPraticiensHesitants() ;
+		else if(sourceEvt == this.itemVisualiserPraticiensH){
+			this.controleur.visualiserPraticiensH() ;
 		}
 
 		

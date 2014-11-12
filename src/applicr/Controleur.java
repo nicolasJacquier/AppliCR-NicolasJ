@@ -9,14 +9,14 @@ import java.util.* ;
  */
 public class Controleur {
 
-	private GuiAppliCR vuePrincipale ;
-	private ModeleLocations modele ;
+	private Guiapplicr vuePrincipale ;
+	private Modele modele ;
 	
 	/** Créer le contrôleur
 	 * 
 	 * @param modele Le modèle
 	 */
-	public Controleur(ModeleLocations modele) {
+	public Controleur(Modele modele) {
 		super();
 		System.out.println("Controleur::Controleur()") ;
 		this.modele = modele;
@@ -26,7 +26,7 @@ public class Controleur {
 	 * 
 	 * @return La vue principale
 	 */
-	public GuiAppliCR getVuePrincipale() {
+	public Guiapplicr getVuePrincipale() {
 		System.out.println("Controleur::getVuePrincipale()") ;
 		return vuePrincipale ;
 	}
@@ -35,17 +35,17 @@ public class Controleur {
 	 * 
 	 * @param vuePrincipale La nouvelle vue principale
 	 */
-	public void setVuePrincipales(GuiAppliCR vuePrincipale) {
+	public void setVuePrincipales(Guiapplicr vuePrincipale) {
 		System.out.println("Controleur::setVuePrincipale()") ;
 		this.vuePrincipale = vuePrincipale ;
 	}
 	
-	/** Visualiser la liste des PraticiensHesitants sous une forme tabulaire
+	/** Visualiser la liste des Praticiens Hesitants sous une forme tabulaire
 	 * 
 	 */
-	public void visualiserPraticiensHesitants(){
-		System.out.println("Controleur::visualiserPraticiensHesitants()") ;
-		this.vuePrincipale.changerDeVue("Liste PraticiensHesitants");
+	public void visualiserPraticiensH(){
+		System.out.println("Controleur::visualiserPraticiensH()") ;
+		this.vuePrincipale.changerDeVue("Liste des Praticiens Hesitants");
 	}
 	
 
@@ -58,19 +58,6 @@ public class Controleur {
 		System.exit(0) ;
 	}
 	
-	/** Visualiser les données de la couche "Logique Métier"
-	 * 
-	 */
-	public void visualiserModele(){
-		System.out.println("Controleur::visualiserModele()") ;
-		System.out.println("") ;
-
-		System.out.println("------------------- PraticiensHesitants -----------------------------") ;
-		for(PraticienHesitant PraticienHesitant : this.modele.getPraticiensHesitants()){
-			System.out.println(PraticienHesitant) ;
-		
-		}
-		System.out.println("") ;
-	}
+	
 	
 }

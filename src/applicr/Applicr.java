@@ -5,22 +5,23 @@ package applicr;
  * @author xilim
  *
  */
-public class AppliCR {
+public class Applicr {
 
 	/**
 	 * @param args
+	 * @throws ClassNotFoundException 
 	 */
-	public static void main(String[] args) {
-		System.out.println("applicr::main()") ;
+	public static void main(String[] args) throws ClassNotFoundException {
+		System.out.println("Applicr::main()") ;
 		
 		System.out.println(" [Creation du modele]") ;
-		ModeleLocations modele = new ModeleLocations() ;
+		Modele modele = new Modele() ;
 		
 		System.out.println(" [Creation du controleur]") ;
 		Controleur controleur = new Controleur(modele) ;
 		
 		System.out.println(" [Creation de la vue principale]") ;
-		new GuiAppliCR(modele,controleur) ;
+		new Guiapplicr(modele,controleur) ;
 	}
 
 }

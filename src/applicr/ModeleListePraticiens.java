@@ -3,27 +3,27 @@ package applicr ;
 import java.util.* ;
 import javax.swing.table.* ;
 
-/** Modèle du tableau des PraticiensHesitants
+/** Modèle du tableau des Praticiens Hesitants
  * 
  * @author xilim
  *
  */
-public class ModeleListePraticiensHesitants extends AbstractTableModel {
+public class ModeleListePraticiens extends AbstractTableModel {
 	
-	private List<PraticienHesitant> PraticiensHesitants ;
-	private final String[] entetes = {"Nom","Ville","Coeffconfiance","Temps Ecoule","Coeff Notoriete"} ;
+	private List<Praticien> Praticiens ;
+	private final String[] entetes = {"Nom","Ville","Coeff confiance","Temps Ecoule","Coeff Notoriete"} ;
 	
-	private ModeleLocations modele ;
+	private Modele modele ;
 	
-	/** Créer le modèle de la liste des PraticiensHesitants
+	/** Créer le modèle de la liste des Praticiens
 	 * 
 	 * @param modele Le modèle de l'application
 	 */
-	public ModeleListePraticiensHesitants(ModeleLocations modele){
+	public ModeleListePraticiens(Modele modele){
 		super() ; 
-		System.out.println("ModeleListePraticiensHesitants::ModeleListePraticiensHesitants()") ;
+		System.out.println("ModeleListePraticiens::ModeleListePraticiens()") ;
 		this.modele = modele ;
-		PraticiensHesitants = modele.getPraticiensHesitants() ;
+		Praticiens = modele.getPraticiens() ;
 	}
 	
 	/** Obtenir le nombre de lignes
@@ -31,8 +31,8 @@ public class ModeleListePraticiensHesitants extends AbstractTableModel {
 	 * @return Le nombre de lignes
 	 */
 	public int getRowCount(){
-		//System.out.println("ModeleListePraticiensHesitants::getRowCount()") ;
-		return PraticiensHesitants.size() ;
+		//System.out.println("ModeleListePraticiens::getRowCount()") ;
+		return Praticiens.size() ;
 	}
 
 	/** Obtenir le nombre de colonnes
@@ -40,7 +40,7 @@ public class ModeleListePraticiensHesitants extends AbstractTableModel {
 	 * @return Le nombre de colonnes
 	 */
 	public int getColumnCount(){
-		//System.out.println("ModeleListePraticiensHesitants::getColumnCount()") ;
+		//System.out.println("ModeleListePraticiensH::getColumnCount()") ;
 		return entetes.length ;
 	}
 	
@@ -50,7 +50,7 @@ public class ModeleListePraticiensHesitants extends AbstractTableModel {
 	 * @return Le nom de la colonne
 	 */
 	public String getColumnName(int indiceColonne){
-		//System.out.println("ModeleListePraticiensHesitants::getColumnName()") ;
+		//System.out.println("ModeleListePraticiensH::getColumnName()") ;
 		return entetes[indiceColonne] ;
 	}
 	
@@ -61,14 +61,14 @@ public class ModeleListePraticiensHesitants extends AbstractTableModel {
 	 * @return La valeur de la cellule
 	 */
 	public Object getValueAt(int indiceLigne, int indiceColonne){
-		//System.out.println("ModeleListePraticiensHesitants::getValueAt()") ;
+		//System.out.println("ModeleListePraticiensH::getValueAt()") ;
 		switch(indiceColonne){
 			case 0 : 
 				return "nom";
 			case 1 : 
 				return "ville";
 			case 2 :
-				return "coeffConfiance" ;
+				return "coeff Confiance" ;
 			case 3 : 
 				return "temps ecoule";
 			case 4 :
